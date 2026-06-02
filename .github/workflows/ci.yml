@@ -1,9 +1,5 @@
 name: CI Build
 on:
-  pull_request:
-    branches:
-      - master
-      - release/*
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed
@@ -97,7 +93,7 @@ jobs:
 
   # checks the falco engine checksum for consistency
   check-engine-checksum:
-    runs-on: ubuntu-latest
+    runs-on: monkci-ubuntu-24.04-32
     needs: [build-dev]
     steps:    
       - name: Checkout PR head ref
@@ -122,7 +118,7 @@ jobs:
 
   # checks the falco engine version and enforce bumping when necessary
   check-engine-version:
-    runs-on: ubuntu-latest
+    runs-on: monkci-ubuntu-24.04-32
     needs: [build-dev]
     steps:    
       - name: Checkout base ref

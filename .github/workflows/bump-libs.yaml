@@ -3,8 +3,6 @@ name: Bump Libs
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 6 * * 1' # on each monday 6:30
 
 permissions:
   contents: read
@@ -16,7 +14,7 @@ concurrency:
 
 jobs:
   bump-libs:
-    runs-on: ubuntu-latest
+    runs-on: monkci-ubuntu-24.04-32
     permissions:
       contents: write
       pull-requests: write
